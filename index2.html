@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Saiteja • Portfolio</title>
+  <meta name="description" content="Portfolio of Saiteja — a computer science student with a passion for AI/ML, full-stack development, and creating clean, intuitive user interfaces." />
+  <meta name="theme-color" content="#131B2A" />
+  <meta property="og:title" content="Saiteja • Portfolio" />
+  <meta property="og:description" content="Projects, skills, and achievements ready for hackathon juries and professional opportunities." />
+  <meta property="og:type" content="website" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* -------------------------- */
+    /* CSS Variables & Base Styles */
+    /* -------------------------- */
+    :root {
+      --bg-start: #0f172a;
+      --bg-end: #1e293b;
+      --panel: rgba(255, 255, 255, 0.05);
+      --ink: #f8fafc; /* Lighter white for text */
+      --muted: #94a3b8;
+      --brand: #38bdf8;
+      --accent: #a855f7;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      --transition: all 0.3s ease-in-out;
+      --radius: 12px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(at 70% 30%, var(--bg-end), var(--bg-start));
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1em;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* -------------------------- */
+    /* Header & Navigation */
+    /* -------------------------- */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 100;
+      transition: background 0.3s ease;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--ink);
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: var(--bg-start);
+      font-weight: 900;
+      font-size: 1.5rem;
+    }
+
+    .nav a {
+      margin-left: 1.5rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav a:hover {
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 100%;
+      height: 2px;
+      background-color: var(--brand);
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* -------------------------- */
+    /* Buttons & Components */
+    /* -------------------------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 99px;
+      font-weight: 600;
+      transition: var(--transition);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      color: var(--bg-start);
+      box-shadow: 0 4px 15px rgba(56, 189, 248, 0.25);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--ink);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .card {
+      background: var(--panel);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 1rem;
+    }
+    
+    .tag {
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    /* -------------------------- */
+    /* Sections & Layouts */
+    /* -------------------------- */
+    section {
+      padding: 5rem 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      padding-top: 2rem;
+    }
+    
+    .hero-content {
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw + 1rem, 4.5rem);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-header h2::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--accent));
+      border-radius: 2px;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 24px;
+    }
+
+    .grid.cols-1 { grid-template-columns: 1fr; }
+    .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+    .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    
+    /* Project Card Specifics */
+    .project-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    
+    .project-card p {
+      flex-grow: 1;
+      font-size: 1rem;
+    }
+
+    .project-card .tags {
+      margin-top: auto; /* Pushes tags to the bottom */
+    }
+
+    /* Contact & Footer */
+    #contact .card {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    #contact a {
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+    
+    /* -------------------------- */
+    /* Mobile & Responsiveness */
+    /* -------------------------- */
+    @media (max-width: 768px) {
+      .nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+      }
+      
+      .nav nav {
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .nav a {
+        margin: 0.5rem;
+      }
+      
+      .hero-content h1 {
+        font-size: clamp(2rem, 8vw, 3rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-logo">S</div>
+        Saiteja
+      </a>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-content">
+        <h1>Hi, I'm Saiteja — I build clean, reliable web apps.</h1>
+        <p>A computer science student passionate about <strong>AI/ML</strong>, <strong>full-stack development</strong>, and crafting <strong>intuitive user interfaces</strong>. I thrive on bringing ideas to life, from concept to code.</p>
+        <div class="tag-list">
+          <span class="tag">Hackathon-Ready</span>
+          <span class="tag">Open to Internships</span>
+          <span class="tag">Clean Code</span>
+          <span class="tag">Problem Solver</span>
+        </div>
+        <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+          <a href="#projects" class="btn primary">See My Work</a>
+          <a href="#contact" class="btn secondary">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container">
+      <div class="section-header">
+        <h2>About Me</h2>
+      </div>
+      <div class="card">
+        <p>As a B.Tech CSM student in India, I've dedicated myself to learning the intricacies of software development. My journey has taken me through various disciplines, but my core interests lie in harnessing the power of artificial intelligence and building robust, scalable web applications. I believe that technology should be both powerful and accessible, and I strive to create solutions that are not only functional but also a pleasure to use.</p>
+        <p>Outside of the classroom, I am an active member of my university's Coding Club, where I've honed my skills in fast-paced, collaborative environments. I'm a quick learner and a strong communicator, always ready to tackle a new challenge or contribute to a team project. My experience includes competing in and winning multiple hackathons, proving my ability to deliver high-quality work under pressure.</p>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+      <div class="section-header">
+        <h2>Technical Skills</h2>
+      </div>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Languages & Frameworks</h3>
+          <p>Python, Java, C, HTML, CSS, JavaScript</p>
+          <p><strong>Frameworks:</strong> Flask, React (Learning)</p>
+        </div>
+        <div class="card">
+          <h3>Tools & Practices</h3>
+          <p>Git, GitHub, REST APIs, UI/UX Design, Figma, Responsive Design, Database Management (SQL), Prompt Engineering, Accessibility</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <div class="section-header">
+        <h2>Recent Projects</h2>
+      </div>
+      <div class="grid cols-3">
+        <div class="card project-card">
+          <h3>SmartNotes App</h3>
+          <p>A Python Flask-based web application for creating and organizing notes. Features include rich text editing, intelligent tagging, and a powerful full-text search engine.</p>
+          <div class="tag-list">
+            <span class="tag">Python</span>
+            <span class="tag">Flask</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+        </div>
+        <div class="card project-card">
+          <h3>DevJobs Board</h3>
+          <p>A sleek, responsive job board for developers. Built with modern web standards, it includes advanced filters, a user authentication system, and a feature to bookmark favorite job listings.</p>
+          <div class="tag-list">
+            <span class="tag">Full-Stack</span>
+            <span class="tag">Web Design</span>
+            <span class="tag">Responsive</span>
+          </div>
+        </div>
+        <div class="card project-card">
+          <h3>Algorithm Visualizer</h3>
+          <p>An interactive desktop application built with JavaFX. This tool visually demonstrates how various sorting and searching algorithms work, helping students and enthusiasts better understand complex data structures.</p>
+          <div class="tag-list">
+            <span class="tag">Java</span>
+            <span class="tag">JavaFX</span>
+            <span class="tag">Algorithms</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="container">
+      <div class="section-header">
+        <h2>Achievements</h2>
+      </div>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Hackathon & Competition Highlights</h3>
+          <ul>
+            <li><strong>Top 3 Finish</strong> in HITAM Coding Competition 2025.</li>
+            <li><strong>4+ Hackathons</strong> participated, with multiple podium finishes.</li>
+            <li>Built and deployed <strong>3+ full-stack MVPs</strong> in under 36 hours.</li>
+            <li>Core member and active participant in the University Coding Club.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Why Work With Me?</h3>
+          <p>⚡ <strong>Fast Prototyping:</strong> I can quickly turn concepts into working models.</p>
+          <p>💡 <strong>Clear Communication:</strong> I excel at articulating technical concepts to both technical and non-technical audiences.</p>
+          <p>🎯 <strong>Strong Teamwork:</strong> I am a collaborative and supportive team player, dedicated to collective success.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <div class="section-header">
+        <h2>Get In Touch</h2>
+      </div>
+      <div class="card">
+        <p>I am currently seeking new opportunities and collaborations. Whether you have a question or just want to connect, feel free to reach out. I'm always open to discussing new ideas.</p>
+        <p>
+          Email: <a href="mailto:kotagirisaiteja12234@gmail.com">kotagirisaiteja12234@gmail.com</a>
+          <br>GitHub: <a href="https://github.com/saiteja320" target="_blank">github.com/saiteja320</a>
+          <br>LinkedIn: <a href="https://www.linkedin.com/in/kotagiri-saiteja-4429b832b" target="_blank">linkedin.com/in/kotagiri-saiteja</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Saiteja • Built with ❤️ and clean code.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
